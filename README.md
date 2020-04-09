@@ -1,11 +1,3 @@
-# codepath-group2
-Unit 8: Group Milestone - README Example
-===
-
-:::info
-**Below is an example** of what your **Group Project README** should include and how it should be structured for the **Unit 8 Group Milestone Submission**.
-:::
-
 # YumSpot
 
 ## Table of Contents
@@ -22,7 +14,7 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
 - **Mobile:** This app would be developed for mobile. Functionality would be limited to mobile devices. This app uses map and camera.
 - **Story:** users can search good places to eat, upload and share photos of food, and make appointments to eat out.
 - **Market:** Any individual could choose to use this app whoever enjoys food and likes to eat out. Sharing photos and talking with friends about food will allow users to have more exciting experience.
-- **Habit:** This app could be used as often or unoften as the user wanted depending on how often they are talking about food and eating out.++++++
+- **Habit:** This app could be used as often or unoften as the user wanted depending on how often they are talking about food and eating out.
 - **Scope:** First we would start with sharing food interests. We would like to expand to delivery and advertisement features.
 
 
