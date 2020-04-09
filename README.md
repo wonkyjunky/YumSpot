@@ -86,4 +86,4 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
 <img src="https://i.imgur.com/lYHn37F.jpg" height=200>
 
 ### [BONUS] Interactive Prototype
-<img src="https://i.imgur.com/AiKfE5g.gif" width=200>
+<img src="https://github.com/Codepath-group-2/codepath-group2/blob/master/Walkthrough.gif" width=200>
