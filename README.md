@@ -80,7 +80,7 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
                   -> Login Screen (if logout button is clicked)
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://github.com/Codepath-group-2/codepath-group2/blob/master/YumSpot.JPG" height=400>
+<img src="https://github.com/Codepath-group-2/codepath-group2/blob/master/YumSpot.JPG" height=600>
 
 ### [BONUS] Interactive Prototype
-<img src="https://github.com/Codepath-group-2/codepath-group2/blob/master/Walkthrough.gif" width=200>
+<img src="https://github.com/Codepath-group-2/codepath-group2/blob/master/Walkthrough.gif" width=300>
