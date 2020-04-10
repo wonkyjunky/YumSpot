@@ -127,26 +127,11 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
       - (Read/GET) Query logged in user object
       - (Update/PUT) Update user profile image
 #### [OPTIONAL:] Existing API Endpoints
-##### An API Of Yelp's Business Search
-- Base URL - [https://api.yelp.com/v3/businesses/search](https://api.yelp.com/v3/businesses/search)
+##### An API of Yelp's Business
+- Base URL - [https://api.yelp.com/v3/businesses](https://api.yelp.com/v3/businesses/search)
 
    HTTP Verb | Endpoint | Description
    ----------|----------|------------
-    `GET`    | /characters | get all characters
-    `GET`    | /characters/?name=name | return specific character by name
-    `GET`    | /houses   | get all houses
-    `GET`    | /houses/?name=name | return specific house by name
-
-##### Game of Thrones API
-- Base URL - [https://api.got.show/api](https://api.got.show/api)
-
-   HTTP Verb | Endpoint | Description
-   ----------|----------|------------
-    `GET`    | /cities | gets all cities
-    `GET`    | /cities/byId/:id | gets specific city by :id
-    `GET`    | /continents | gets all continents
-    `GET`    | /continents/byId/:id | gets specific continent by :id
-    `GET`    | /regions | gets all regions
-    `GET`    | /regions/byId/:id | gets specific region by :id
-    `GET`    | /characters/paths/:name | gets a character's path with a given name
-
+    `GET`    | /search | returns up to 1000 businesses based on the provided search criteria
+    `GET`    | /{id} | returns detailed business content
+    `GET`    | /{id}/reviews | returns up to three review excerpts for a given business
