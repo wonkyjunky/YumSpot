@@ -101,7 +101,18 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
    | updatedAt     | DateTime | date when post is last updated (default field) |
 ### Networking
 #### List of network requests by screen
-   - Home Feed Screen
+   - Register Screen
+      - (Create/POST) Create a new account
+   - Feed Screen
+      - (Create/POST) Create a new like on a post
+      - (Delete) Delete existing like
+      - (Create/POST) Create a new comment on a post
+      - (Delete) Delete existing comment
+   - Post Screen
+      - (Create/POST) Create a new post object
+   - Chat Screen
+   - Profile Screen
+      - (Read/GET) Query logged in user object
       - (Read/GET) Query all posts where user is author
          ```swift
          let query = PFQuery(className:"Post")
@@ -116,15 +127,6 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
             }
          }
          ```
-      - (Create/POST) Create a new like on a post
-      - (Delete) Delete existing like
-      - (Create/POST) Create a new comment on a post
-      - (Delete) Delete existing comment
-   - Create Post Screen
-      - (Create/POST) Create a new post object
-   - Profile Screen
-      - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user profile image
 #### [OPTIONAL:] Existing API Endpoints
 ##### An API of Yelp's Business
 - Base URL - [https://api.yelp.com/v3/businesses](https://api.yelp.com/v3/businesses/search)
