@@ -40,9 +40,9 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
 
 ### 2. Screen Archetypes
 
-* Login
+* Login Screen
    * Users can log in
-* Register - User signs up or logs into their account
+* Register Screen
    * Users can register a new account
 * Category Screen
    * Food category buttons 
