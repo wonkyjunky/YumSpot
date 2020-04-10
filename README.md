@@ -100,6 +100,13 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
 ### Networking
+   | CRUD     | HTTP Verb | Example     |
+   | -------- | --------- | ----------- |
+   | Create   | POST      | Creating a new post |
+   | Read     | GET       | Fetching posts for a user's feed |
+   | Update   | PUT       | Changing a user's profile image |
+   | Delete   | DELETE    | Deleting a comment |
+
 #### List of network requests by screen
    - Home Feed Screen
       - (Read/GET) Query all posts where user is author
