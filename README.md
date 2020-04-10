@@ -127,8 +127,8 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
       - (Read/GET) Query logged in user object
       - (Update/PUT) Update user profile image
 #### [OPTIONAL:] Existing API Endpoints
-##### An API Of Ice And Fire
-- Base URL - [http://www.anapioficeandfire.com/api](http://www.anapioficeandfire.com/api)
+##### An API Of Yelp's Business Search
+- Base URL - [https://api.yelp.com/v3/businesses/search](https://api.yelp.com/v3/businesses/search)
 
    HTTP Verb | Endpoint | Description
    ----------|----------|------------
