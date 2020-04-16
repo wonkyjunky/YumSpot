@@ -103,29 +103,164 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
 #### List of network requests by screen
    - Register Screen
       - (Create/POST) Create a new account
+      ```
+      // Create the ParseUser
+      ParseUser user = new ParseUser();
+      // Set core properties
+      user.setUsername("joestevens");
+      user.setPassword("secret123");
+      user.setEmail("email@example.com");
+      // Set custom properties
+      user.put("phone", "650-253-0000");
+      // Invoke signUpInBackground
+      user.signUpInBackground(new SignUpCallback() {
+        public void done(ParseException e) {
+          if (e == null) {
+            // Hooray! Let them use the app now.
+          } else {
+            // Sign up didn't succeed. Look at the ParseException
+            // to figure out what went wrong
+          }
+        }
+      });
+      ```
    - Feed Screen
-      - (Create/POST) Create a new like on a post
-      - (Delete) Delete existing like
       - (Create/POST) Create a new comment on a post
+        ```
+        @ParseClassName("Post")
+        public class Post extends ParseObject {
+           // ...
+        }
+
+        @ParseClassName("Comment")
+        public class Comment extends ParseObject {
+                // ...
+
+          // Associate each comment with a user
+          public void setOwner(ParseUser user) {
+            put("owner", user);
+          }
+
+          // Get the user for this comment
+          public ParseUser getOwner()  {
+                   return getParseUser("owner");
+          }
+
+          // Associate each comment with a post
+          public void setPost(Post post) {
+            put("post", post);
+          }
+
+          // Get the post for this item
+          public Post getPost()  {
+                   return (Post) getParseObject("post");
+          }
+        }
+
+        // Create the post
+        Post post = new Post("Welcome Spring!");
+        // Get the user
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        // Create the comment
+        Comment comment = new Comment("Get milk and eggs");
+        comment.setPost(post);
+        comment.setOwner(currentUser);
+        comment.saveInBackground();
+        ```
       - (Delete) Delete existing comment
-   - Post Screen
-      - (Create/POST) Create a new post object
-   - Chat Screen
-   - Profile Screen
-      - (Read/GET) Query logged in user object
-      - (Read/GET) Query all posts where user is author
+         ```
+         myComment.deleteInBackground();
+         // After this, the playerName field will be empty
+         myComment.remove("comment");
+         // Saves the field deletion to your Parse Server
+         myComment.saveInBackground();
+         ```
+      - (Read/GET) Query all posts from all users
          ```swift
          let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser)
+         query.include(Post.USER);
+         query.setLimit(30);
          query.order(byDescending: "createdAt")
          query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if let error = error { 
                print(error.localizedDescription)
             } else if let posts = posts {
                print("Successfully retrieved \(posts.count) posts.")
-           // TODO: Do something with posts...
+           // 
+           allpost.addAll(posts)
+           adapter.notifyDatasetChanged();
             }
          }
+         ```
+   - Post Screen
+      - (Create/POST) Create a new post object
+      ```
+      private void savePost(String description, ParseUser currentUser, File photoFile) {
+          Post post = new Post();
+          post.setDescription(description);
+          post.setImage(new ParseFile(photoFile));
+          post.setUser(currentUser);
+          post.saveInBackground(new SaveCallback() {
+              @Override
+              public void done(ParseException e) {
+                  if (e != null){
+                      Log.e(TAG, "Error while saving", e);
+                      Toast.makeText(MainActivity.this, "Error while saving", Toast.LENGTH_SHORT).show();
+                  }
+                  Log.i(TAG, "Post save was successful!!");
+                  etDescription.setText("");
+                  ivPostImage.setImageResource(0);
+              }
+          });
+      }
+
+      ```
+   - Chat Screen
+   - Profile Screen
+      - (Read/GET) Query logged in user object
+      ```
+      ParseQuery<ParseUser> query = ParseUser.getQuery();
+      query.whereKey("author", equalTo: currentUser);
+      query.findInBackground(new FindCallback<ParseUser>() {
+        public void done(List<ParseUser> objects, ParseException e) {
+          if (e == null) {
+              print("Successfully retrieved user.")
+          } else {
+              print(error.localizedDescription)
+          }
+          String objectId = item.getObjectId();
+          String objectEmail = item.getObjectEmail();
+        }
+      });
+      ```
+      - (Read/GET) Query all posts where user is author
+         ```swift
+         let query = PFQuery(className:"Post")
+         query.whereKey("author", equalTo: currentUser);
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let posts = posts {
+               print("Successfully retrieved \(posts.count) posts.")
+           // 
+           allpost.addAll(posts)
+           adapter.notifyDatasetChanged();
+            }
+         }
+         ```
+     - (Delete) Delete existing post
+         ```
+         myPost.deleteInBackground();
+         // After this, the playerName field will be empty
+         myPost.remove("post");
+         // Saves the field deletion to your Parse Server
+         myPost.saveInBackground();
+         ```
+     - (Read/GET) getcurrentUser to check if the user logged out sucessfully
+         ```
+         ParseUser.logOut();
+         ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
          ```
 #### [OPTIONAL:] Existing API Endpoints
 ##### An API of Yelp's Business
