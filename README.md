@@ -93,12 +93,15 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | image         | File     | image that user posts |
-   | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User| image author |
+   | userId        | String   | unique id for the user post (default field) |
+   | user          | Pointer to User | image user |
    | commentsCount | Number   | number of comments that has been posted to an image |
    | likesCount    | Number   | number of likes for the post |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
+   | userEmail     | String   | user's email |
+   | userPassword  | String   | user's password |
+   
 ### Networking
 #### List of network requests by screen
    - Register Screen
@@ -107,11 +110,9 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
          // Create the ParseUser
          ParseUser user = new ParseUser();
          // Set core properties
-         user.setUsername("joestevens");
-         user.setPassword("secret123");
-         user.setEmail("email@example.com");
-         // Set custom properties
-         user.put("phone", "650-253-0000");
+         user.setUserId("joestevens");
+         user.setUserPassword("secret123");
+         user.setUserEmail("email@example.com");
          // Invoke signUpInBackground
          user.signUpInBackground(new SignUpCallback() {
            public void done(ParseException e) {
@@ -220,7 +221,7 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
       - (Read/GET) Query logged in user object
          ```
          ParseQuery<ParseUser> query = ParseUser.getQuery();
-         query.whereKey("author", equalTo: currentUser);
+         query.whereKey("user", equalTo: currentUser);
          query.findInBackground(new FindCallback<ParseUser>() {
            public void done(List<ParseUser> objects, ParseException e) {
              if (e == null) {
@@ -228,15 +229,15 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
              } else {
                  print(error.localizedDescription)
              }
-             String objectId = item.getObjectId();
-             String objectEmail = item.getObjectEmail();
+             String userId = item.getUserId();
+             String userEmail = item.getUserEmail();
            }
          });
          ```
-      - (Read/GET) Query all posts where user is author
+      - (Read/GET) Query all posts where user is currentUser
          ```swift
          let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser);
+         query.whereKey("user", equalTo: currentUser);
          query.order(byDescending: "createdAt")
          query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if let error = error { 
