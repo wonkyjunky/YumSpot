@@ -23,20 +23,20 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
 
 **Required Must-have Stories**
 
-* Users log in to access previous chats and preferred restaurants.
-* Users can search restaurants by location and name.
-* Users can select food categories to see the list of restaurants.
-* Users can post photos of food. 
-* Users can talk with their friend.
-* Settings (profile, logout)
+- [] Users log in to access previous chats and preferred restaurants.
+- [] Users can search restaurants by location and name.
+- [] Users can select food categories to see the list of restaurants.
+- [] Users can post photos of food. 
+- [] Users can talk with their friend.
+- [] Settings (profile, logout)
 
 **Optional Nice-to-have Stories**
 
-* Include a map on detailed page of restaurant. 
-* Share map in chat.
-* Show posted photos by a user on profile page.
-* Include a like button to save user's favorite places.
-* Include a phone call feature
+- [] Include a map on detailed page of restaurant. 
+- [] Share map in chat.
+- [] Show posted photos by a user on profile page.
+- [] Include a like button to save user's favorite places.
+- [] Include a phone call feature
 
 ### 2. Screen Archetypes
 
