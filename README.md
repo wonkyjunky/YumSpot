@@ -272,3 +272,7 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
     `GET`    | /search | returns up to 1000 businesses based on the provided search criteria
     `GET`    | /{id} | returns detailed business content
     `GET`    | /{id}/reviews | returns up to three review excerpts for a given business
+    
+### Progress so far
+
+<img src="https://github.com/Codepath-group-2/YumSpot/blob/master/progress.gif" width=300 />
