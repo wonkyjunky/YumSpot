@@ -7,6 +7,49 @@
     android:background="@color/colorSoftPink"
     tools:context=".SignupActivity">
 
+    <EditText
+        android:id="@+id/etCopassword"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCoPassword" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="190dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvEmail" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/etCopassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvPassword" />
+
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
@@ -16,4 +59,133 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="291dp"
+        android:layout_height="59dp"
+        android:text="@string/Welcome"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Username"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="190dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCoPassword"
+        android:layout_width="182dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Confirm Password"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCoPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSign"
+        android:layout_width="119dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="344dp"
+        android:text="SIGN UP"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/etName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvUsername"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.926" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">YumSpot</string>
     <string name="select_a_category">Select a Category</string>
+    <string name="Welcome">Welcome to YumSpot!</string>
 </resources>
