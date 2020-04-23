@@ -22,7 +22,7 @@ YumSpot is an app that allows users can search good places to eat, upload and sh
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-
+- [x] Users can log in and sign up for the app.
 - [ ] Users log in to access previous chats and preferred restaurants.
 - [ ] Users can search restaurants by location and name.
 - [ ] Users can select food categories to see the list of restaurants.
