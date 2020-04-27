@@ -10,11 +10,12 @@
         android:id="@+id/rvRestaurants"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
         android:backgroundTint="@color/colorSoftOrange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,45 +30,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleMargin="0dp" />
 
-    <ImageButton
-        android:id="@+id/btnBack2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bt_round"
-        android:backgroundTint="@color/colorLogoBlue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/btnBack2"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/bt_round"-->
+<!--        android:backgroundTint="@color/colorLogoBlue"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/abc_vector_test" />-->
 
-    <TextView
-        android:id="@+id/tvSearchTitle"
-        android:layout_width="60dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorWhite"
-        android:fontFamily="@font/coda"
-        android:gravity="center"
-        android:text="@string/filter"
-        android:textAllCaps="true"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:translationZ="5dp"
-        app:layout_constraintStart_toEndOf="@id/btnBack2"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvSearchTitle"-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginStart="55dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@color/colorWhite"-->
+<!--        android:fontFamily="@font/coda"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/filter"-->
+<!--        android:textAllCaps="true"-->
+<!--        android:textSize="15sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:translationZ="5dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/btnBack2"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <EditText
         android:id="@+id/etSearchRestaurants"
         android:layout_width="140dp"
         android:layout_height="35dp"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
         android:background="@drawable/et_search"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/btnBack2"
+        app:layout_constraintStart_toEndOf="@+id/spinner1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -86,16 +87,27 @@
         app:layout_constraintStart_toEndOf="@+id/etSearchRestaurants"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="45dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorWhite"
-        android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/btnBack2"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+<!--    <Switch-->
+<!--        android:id="@+id/switch1"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@color/colorWhite"-->
+<!--        android:gravity="center"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btnBack2"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="409dp"

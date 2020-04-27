@@ -8,5 +8,8 @@ import retrofit2.http.Query;
 public interface YelpService {
 
     @GET("businesses/search")
-    Call<YelpSearchResult> searchRestaurant(@Header ("Authorization") String authHeader, @Query("term") String searchTerm, @Query("location") String location);
+    Call<YelpSearchResult> searchRestaurant(@Header ("Authorization") String authHeader,
+                                            @Query("categories") String searchCategories,
+                                            @Query("location") String location,
+                                            @Query("term") String searchTerm);
 }
