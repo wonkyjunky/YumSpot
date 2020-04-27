@@ -16,14 +16,60 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         i5 = findViewById(R.id.ib5);
+        i6 = findViewById(R.id.ib6);
+        i3 = findViewById(R.id.ib3);
+        i4 = findViewById(R.id.ib4);
+        i1 = findViewById(R.id.ib1);
+        i2 = findViewById(R.id.ib2);
 
         i5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, SearchActivity.class);
+                SearchActivity.categories = "chinese";
                 startActivity(intent);
             }
         });
 
+        i6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, SearchActivity.class);
+                SearchActivity.categories = "burgers";
+                startActivity(intent);
+            }
+        });
+        i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, SearchActivity.class);
+                SearchActivity.categories = "tacos";
+                startActivity(intent);
+            }
+        });
+        i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, SearchActivity.class);
+                SearchActivity.categories = "chicken_wings";
+                startActivity(intent);
+            }
+        });
+        i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, SearchActivity.class);
+                SearchActivity.categories = "pizza";
+                startActivity(intent);
+            }
+        });
+        i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, SearchActivity.class);
+                SearchActivity.categories = "coffee";
+                startActivity(intent);
+            }
+        });
     }
 }
