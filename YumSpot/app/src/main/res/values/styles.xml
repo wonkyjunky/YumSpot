@@ -1,10 +1,10 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorHotPink</item>
-        <item name="colorPrimaryDark">@color/colorHotPink</item>
+        <item name="colorPrimary">@color/colorSunrise</item>
+        <item name="colorPrimaryDark">@color/colorSunrise</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

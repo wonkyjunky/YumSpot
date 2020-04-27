@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
     Button btnLogin;
-    Button btnSignup;
+    TextView tvSignup;
     TextView tvYumSpot;
     EditText etId;
     EditText etPw;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnLogin = findViewById(R.id.btnLogin);
-        btnSignup = findViewById(R.id.btnSignup);
+        tvSignup = findViewById(R.id.tvSignup);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this, SignupActivity.class);
