@@ -5,4 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorHotPink">#DA559A</color>
     <color name="colorSoftPink">#FDEBF4</color>
+    <color name="colorOrange">#FF9800</color>
+    <color name="colorSoftOrange">#FFC594</color>
+    <color name="colorSunrise">#E67451</color>
+    <color name="colorLogoBlue">#1D2A67</color>
 </resources>
