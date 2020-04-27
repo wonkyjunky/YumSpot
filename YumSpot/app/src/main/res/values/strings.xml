@@ -3,5 +3,6 @@
     <string name="select_a_category">Select a Category</string>
     <string name="Welcome">Welcome to YumSpot!</string>
     <string name="don_t_have_an_account"><u>Don\'t have an account?</u></string>
+    <string name="search_restaurants">Search Restaurants</string>
 
 </resources>
