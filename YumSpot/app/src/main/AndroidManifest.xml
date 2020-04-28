@@ -3,26 +3,31 @@
     package="com.codepath.yjoh.yumspot">
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".ChatApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".Parse.ParseApplication"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailsActivity"></activity>
-        <activity android:name=".FeedActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".CategoryActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".ChatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".FeedActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".LoginActivity">
+
         </activity>
 
         <meta-data
