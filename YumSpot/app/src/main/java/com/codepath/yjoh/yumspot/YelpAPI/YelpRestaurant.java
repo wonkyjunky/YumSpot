@@ -13,6 +13,7 @@ public class YelpRestaurant {
     @SerializedName("distance")
     private Double distanceInMeters;
     @SerializedName("image_url") String imageUrl;
+    @SerializedName("id") String businessId;
     List<YelpCategory> categories;
     YelpLocation location;
 

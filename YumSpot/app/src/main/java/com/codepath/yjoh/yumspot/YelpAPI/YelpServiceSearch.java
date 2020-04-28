@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Query;
 
-public interface YelpService {
+public interface YelpServiceSearch {
 
     @GET("businesses/search")
     Call<YelpSearchResult> searchRestaurant(@Header ("Authorization") String authHeader,

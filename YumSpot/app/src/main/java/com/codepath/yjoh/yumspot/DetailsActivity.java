@@ -16,37 +16,36 @@ import android.widget.Toast;
 import com.codepath.yjoh.yumspot.YelpAPI.RestaurantsAdapter;
 import com.codepath.yjoh.yumspot.YelpAPI.YelpRestaurant;
 import com.codepath.yjoh.yumspot.YelpAPI.YelpSearchResult;
+import com.codepath.yjoh.yumspot.YelpAPI.YelpServiceDetails;
 import com.codepath.yjoh.yumspot.YelpAPI.YelpServiceSearch;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SearchActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity {
 
-    private static final String TAG = "SearchActivity";
+    private static final String TAG = "DetailsActivity";
     private static final String BASE_URL = "https://api.yelp.com/v3/";
     public static final String  apiKey = "Zn_-XRQAXGwGDOexuinCZkofR-0ZGYDVr-90rF8vwEkLe257suMGUrtQazkrA_YD6c3VV5Q8CdTfhjKWQAGExRxtKJ7BQUrNkPjupz7ANviqerfmNPRgmMihurSPXnYx";
 
     private static final String[] paths = {"Name", "Location"};
-    EditText etSearchName;
-    EditText etSearchLocation;
 
-    List<YelpRestaurant> restaurants;
+
+    YelpRestaurant restaurant;
     RestaurantsAdapter adapter;
     RecyclerView rvRestaurant;
-    public static String categories;
-    public static String location = "San Jose";
-    public static String term = categories;
-    public static String searchSelect = "Name";
-    ImageButton btBackSearch;
-    Button btSearch;
-    YelpServiceSearch yelpService;
+//    public static String categories;
+//    public static String location = "San Jose";
+//    public static String term = categories;
+//    public static String searchSelect = "Name";
+    public static String businessId = "id";
+    ImageButton btBackDetails;
+    YelpServiceDetails yelpServiceDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +58,12 @@ public class SearchActivity extends AppCompatActivity {
                 .build();
 
         defaultvalues();
-        yelpService = retrofit.create(YelpServiceSearch.class);
-        etSearchName = findViewById(R.id.etSearchName);
-        etSearchLocation = findViewById(R.id.etSearchLocation);
-        btBackSearch = findViewById(R.id.btBackSearch);
-        btSearch = findViewById(R.id.btSearch);
+        yelpServiceDetails = retrofit.create(YelpServiceDetails.class);
+
+        btBackDetails = findViewById(R.id.btBackDetails);
         rvRestaurant = findViewById(R.id.rvRestaurants);
-        restaurants = new ArrayList<>();
-        adapter = new RestaurantsAdapter(this, restaurants);
+        restaurant = new YelpRestaurant();
+        adapter = new RestaurantsAdapter(this, restaruants);
 
         rvRestaurant.setLayoutManager(new LinearLayoutManager(this));
         rvRestaurant.setAdapter((RecyclerView.Adapter) adapter);
@@ -83,11 +80,10 @@ public class SearchActivity extends AppCompatActivity {
         btSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String inputName = etSearchName.getText().toString();
-                String inputLocation = etSearchLocation.getText().toString();
+
 
                 if (inputName.equals("") && inputLocation.equals("")) {
-                    Toast.makeText(SearchActivity.this, "You entered nothing.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, "You entered nothing.", Toast.LENGTH_SHORT).show();
                 }
                 else if (inputName.equals("")) {
                     location = inputLocation;
@@ -99,7 +95,7 @@ public class SearchActivity extends AppCompatActivity {
                     location = inputLocation;
                     term = inputName;
                 }
-                restaurants.clear();
+                restaruants.clear();
                 search(term, location);
             }
         });
@@ -113,10 +109,10 @@ public class SearchActivity extends AppCompatActivity {
                 Log.i(TAG, "onResponse" + response);
                 YelpSearchResult body = response.body();
                 if (body == null){
-                    Toast.makeText(SearchActivity.this, "No results. Try others!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, "No results. Try others!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                restaurants.addAll(body.restaurants);
+                restaruants.addAll(body.restaurants);
                 adapter.notifyDataSetChanged();
                 adapter.notifyDataSetChanged();
             }

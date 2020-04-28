@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    android:opticalInsetRight="@dimen/cardview_compat_inset_shadow"
+    android:thickness="@dimen/material_emphasis_medium">
+    <corners android:radius="200dp"/>
+
+    <gradient
+        android:endColor="#83FFC594"
+        android:startColor="#FDDABB"
+        android:angle="270"/>
+
+
+</shape>
+
+
+

@@ -11,18 +11,18 @@ import android.widget.Toast;
 
 public class SignupActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
-    Button btnSign;
+    ImageButton btBack;
+    Button btSign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        btnBack = findViewById(R.id.btnBack);
-        btnSign = findViewById(R.id.btnSign);
+        btBack = findViewById(R.id.btBack);
+        btSign = findViewById(R.id.btSign);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        btnSign.setOnClickListener(new View.OnClickListener() {
+        btSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
