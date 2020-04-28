@@ -2,7 +2,6 @@ package com.codepath.yjoh.yumspot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView tvSignup;
     TextView tvYumSpot;
@@ -22,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         btnLogin = findViewById(R.id.btnLogin);
         tvSignup = findViewById(R.id.tvSignup);
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+                Intent intent = new Intent(LoginActivity.this, CategoryActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, SignupActivity.class);
+                Intent intent1 = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent1);
                 finish();
             }
