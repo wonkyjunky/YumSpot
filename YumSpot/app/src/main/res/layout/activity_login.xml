@@ -68,7 +68,7 @@
         android:fontFamily="@font/coda"
         android:gravity="clip_vertical"
         android:hint="password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
