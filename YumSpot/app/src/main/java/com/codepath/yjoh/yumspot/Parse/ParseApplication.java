@@ -2,12 +2,13 @@ package com.codepath.yjoh.yumspot.Parse;
 
 import android.app.Application;
 
+import com.codepath.yjoh.yumspot.ChatApplication;
 import com.parse.Parse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-public class ParseApplication extends Application {
+public class ParseApplication extends ChatApplication {
 
     @Override
     public void onCreate() {
