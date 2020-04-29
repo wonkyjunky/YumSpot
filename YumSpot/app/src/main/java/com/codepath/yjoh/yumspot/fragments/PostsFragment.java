@@ -1,16 +1,17 @@
 package com.codepath.yjoh.yumspot.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.codepath.yjoh.yumspot.Post;
 import com.codepath.yjoh.yumspot.PostsAdapter;
@@ -70,7 +71,7 @@ public class PostsFragment extends Fragment {
                     return;
                 }
                 for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                    Log.i(TAG, "Post: " + post.getDescription()+ ", username: " + post.getUser().getUsername());
                 }
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();

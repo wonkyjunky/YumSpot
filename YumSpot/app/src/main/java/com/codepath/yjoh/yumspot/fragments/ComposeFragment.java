@@ -5,6 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -16,19 +22,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-
+import com.codepath.yjoh.yumspot.FeedActivity;
 import com.codepath.yjoh.yumspot.Post;
 import com.codepath.yjoh.yumspot.R;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -50,7 +55,6 @@ public class ComposeFragment extends Fragment {
     public ComposeFragment() {
         // Required empty public constructor
     }
-
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     @Override
@@ -105,7 +109,7 @@ public class ComposeFragment extends Fragment {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.yjoh.yumspot.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.

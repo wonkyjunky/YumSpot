@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 
 import com.codepath.yjoh.yumspot.fragments.ComposeFragment;
 import com.codepath.yjoh.yumspot.fragments.PostsFragment;
@@ -20,6 +18,7 @@ public class FeedActivity extends AppCompatActivity {
 
     public static final String TAG = "FeedActivity";
 
+
     final FragmentManager fragmentManager = getSupportFragmentManager();
     private BottomNavigationView bottomNavigationView;
 
@@ -28,17 +27,16 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-
-        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
-                    case R.id.action_home:
+                    case R.id.action_feed:
                         fragment = new PostsFragment();
                         break;
-                    case R.id.action_compose:
+                    case R.id.action_category:
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
@@ -51,7 +49,6 @@ public class FeedActivity extends AppCompatActivity {
             }
         });
         // Set default selection
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
-
+        bottomNavigationView.setSelectedItemId(R.id.action_feed);
     }
 }

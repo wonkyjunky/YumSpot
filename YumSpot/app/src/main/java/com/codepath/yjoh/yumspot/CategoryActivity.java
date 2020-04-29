@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class CategoryActivity extends AppCompatActivity {
     ImageView i1, i2, i3, i4, i5, i6;
     ImageView ibMenuChat;
+    ImageView ibMenuFeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class CategoryActivity extends AppCompatActivity {
         i1 = findViewById(R.id.ib1);
         i2 = findViewById(R.id.ib2);
         ibMenuChat = findViewById(R.id.ibMenuChat);
+        ibMenuFeed = findViewById(R.id.ibMenuFeed);
 
         i5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +82,14 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibMenuFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, FeedActivity.class);
                 startActivity(intent);
             }
         });

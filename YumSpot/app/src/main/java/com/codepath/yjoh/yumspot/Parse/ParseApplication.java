@@ -3,7 +3,9 @@ package com.codepath.yjoh.yumspot.Parse;
 import android.app.Application;
 
 import com.codepath.yjoh.yumspot.ChatApplication;
+import com.codepath.yjoh.yumspot.Post;
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -13,6 +15,9 @@ public class ParseApplication extends ChatApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Register your parse models
+        ParseObject.registerSubclass(Post.class);
 
 //        // Use for troubleshooting -- remove this line for production
 //        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
