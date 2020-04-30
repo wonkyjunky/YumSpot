@@ -33,7 +33,6 @@ public class SearchActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://api.yelp.com/v3/";
     public static final String  apiKey = "Zn_-XRQAXGwGDOexuinCZkofR-0ZGYDVr-90rF8vwEkLe257suMGUrtQazkrA_YD6c3VV5Q8CdTfhjKWQAGExRxtKJ7BQUrNkPjupz7ANviqerfmNPRgmMihurSPXnYx";
 
-    private static final String[] paths = {"Name", "Location"};
     EditText etSearchName;
     EditText etSearchLocation;
 
@@ -69,7 +68,7 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new RestaurantsAdapter(this, restaurants);
 
         rvRestaurant.setLayoutManager(new LinearLayoutManager(this));
-        rvRestaurant.setAdapter((RecyclerView.Adapter) adapter);
+        rvRestaurant.setAdapter(adapter);
 
         btBackSearch.setOnClickListener(new View.OnClickListener() {
             @Override

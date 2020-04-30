@@ -1,26 +1,34 @@
 package com.codepath.yjoh.yumspot.YelpAPI;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.codepath.yjoh.yumspot.DetailsActivity;
 import com.codepath.yjoh.yumspot.R;
+import com.codepath.yjoh.yumspot.SearchActivity;
+import com.codepath.yjoh.yumspot.YelpAPI.Detailed.YelpServiceDetails;
 
 import java.util.List;
 
 public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.ViewHolder> {
 
+    public static final String TAG = "RestaurantsAdapter";
     private Context context;
     private List<YelpRestaurant> restaurants;
 
@@ -58,6 +66,8 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
         TextView tvDistance;
         TextView tvPrice;
         ImageView imageView;
+        String restaurantId;
+        ConstraintLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,10 +79,13 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
             tvDistance = itemView.findViewById(R.id.tvDistance);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             imageView = itemView.findViewById(R.id.imageView);
+            container = itemView.findViewById(R.id.container);
+
 
         }
 
-        public void bind(YelpRestaurant restaurant) {
+        public void bind(final YelpRestaurant restaurant) {
+            restaurantId = restaurant.businessId;
             tvName.setText(restaurant.name);
             ratingBar.setRating(Float.valueOf(String.valueOf(restaurant.rating)));
             tvNumReviews.setText(restaurant.numReviews + " Reviews");
@@ -83,6 +96,15 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
             Glide.with(context).load(restaurant.imageUrl).apply(new RequestOptions().transform(
                     new CenterCrop(), new RoundedCorners(20)
             )).into(imageView);
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, DetailsActivity.class);
+                    context.startActivity(i);
+                    DetailsActivity.id = restaurant.businessId;
+
+                }
+            });
 
         }
     }

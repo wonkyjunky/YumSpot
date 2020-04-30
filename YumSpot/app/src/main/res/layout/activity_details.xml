@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".DetailsActivity">
 
+    <ImageView
+        android:id="@+id/ivImage3"
+        android:layout_width="120dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toEndOf="@+id/ivImage2"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresses"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivImage2"
+        android:layout_width="120dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toEndOf="@+id/ivImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresses"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="120dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresses"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <ImageButton
         android:id="@+id/btBackDetails"
         android:layout_width="40dp"
@@ -17,5 +45,106 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/tvDetailedTitle"
+        android:layout_width="356dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
+        android:background="#56FF5722"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Wonkyu's" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        style="@android:style/Widget.DeviceDefault.RatingBar"
+        android:layout_width="242dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:numStars="5"
+        android:progressTint="#F44336"
+        android:stepSize="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOpen" />
+
+    <TextView
+        android:id="@+id/tvNumReviews"
+        android:layout_width="118dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="36dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice2"
+        tools:text="7211 Reviws" />
+
+    <TextView
+        android:id="@+id/tvOpen"
+        android:layout_width="244dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailedTitle"
+        tools:text="Open Now!" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="184dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar2"
+        tools:text="(408)444-1058" />
+
+    <TextView
+        android:id="@+id/tvAdresses"
+        android:layout_width="211dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+        tools:text="295" />
+
+    <TextView
+        android:id="@+id/tvUrl"
+        android:layout_width="94dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="44dp"
+
+        android:layout_marginTop="100dp"
+        android:background="#F44336"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvAdresses"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumReviews"
+        tools:text="webpage" />
+
+    <TextView
+        android:id="@+id/tvPrice2"
+        android:layout_width="106dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="36dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailedTitle"
+        tools:text="$$" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
