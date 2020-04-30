@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.codepath.yjoh.yumspot.fragments.ComposeFragment;
 import com.codepath.yjoh.yumspot.fragments.PostsFragment;
@@ -33,11 +37,12 @@ public class FeedActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
+                    case R.id.action_category:
+                    case R.id.action_chat:
+                        fragment = new ComposeFragment();
+                        break;
                     case R.id.action_feed:
                         fragment = new PostsFragment();
-                        break;
-                    case R.id.action_category:
-                        fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                     default:
@@ -48,6 +53,22 @@ public class FeedActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
+
+//        ImageButton ibPost = (ImageButton) findViewById(R.id.ibPost);
+//        ibPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                ComposeFragment compose = new ComposeFragment();
+//                fragmentTransaction.replace(R.id.flContainer, compose);
+//                fragmentTransaction.commit();
+//            }
+//        });
+
+
+
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.action_feed);
     }

@@ -8,24 +8,47 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvUsername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="#CDCCCC"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:fontFamily="@font/coda"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text="yelin" />
+        tools:text="username" />
 
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_marginBottom="20dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
+
     <TextView
         android:id="@+id/tvDescription"
+        android:fontFamily="@font/coda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="trying to look hipster" />
+        android:layout_marginBottom="50dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24dp"
+        android:text="feed description" />
+
+    <TextView
+        android:id="@+id/tvUpdatedAt"
+        android:fontFamily="@font/coda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="updated at" />
+
 </LinearLayout>

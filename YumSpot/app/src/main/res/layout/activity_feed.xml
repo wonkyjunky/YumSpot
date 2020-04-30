@@ -8,6 +8,19 @@
     android:layout_height="match_parent"
     tools:context=".FeedActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMargin="0dp" />
+
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
@@ -22,5 +35,14 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorWhite"
         app:menu="@menu/menu_bottom_navigation" />
+
+
+    <!--        <ImageButton-->
+    <!--        android:id="@+id/ibPost"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:tint="@color/colorBlack"-->
+    <!--        android:background="@android:color/transparent"-->
+    <!--        android:src="@android:drawable/ic_menu_edit" />-->
 
 </RelativeLayout>
