@@ -29,6 +29,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.livequery.ParseLiveQueryClient;
+import com.parse.livequery.SubscriptionHandling;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class ChatActivity extends Fragment {
+
     static final String TAG = ChatActivity.class.getSimpleName();
     static final String USER_ID_KEY = "userId";
     static final String BODY_KEY = "body";
@@ -57,15 +60,15 @@ public class ChatActivity extends Fragment {
     }
 
     // Create a handler which can run code periodically
-    static final int POLL_INTERVAL = 1000; // milliseconds
-    Handler myHandler = new Handler();  // android.os.Handler
-    Runnable mRefreshMessagesRunnable = new Runnable() {
-        @Override
-        public void run() {
-            refreshMessages();
-            myHandler.postDelayed(this, POLL_INTERVAL);
-        }
-    };
+//    static final int POLL_INTERVAL = 1000; // milliseconds
+//    Handler myHandler = new Handler();  // android.os.Handler
+//    Runnable mRefreshMessagesRunnable = new Runnable() {
+//        @Override
+//        public void run() {
+//            refreshMessages();
+//            myHandler.postDelayed(this, POLL_INTERVAL);
+//        }
+//    };
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -74,18 +77,55 @@ public class ChatActivity extends Fragment {
         btSend = (Button) view.findViewById(R.id.btSend);
         rvChat = (RecyclerView) view.findViewById(R.id.rvChat);
 
-        Message message = new Message();
-        message.setUserId(ParseUser.getCurrentUser().getObjectId());
-
-        refreshMessages();
-
         // User login
         if (ParseUser.getCurrentUser() != null) { // start with existing user
             startWithCurrentUser();
         } else { // If not logged in, login as a new anonymous user
             login();
         }
-//        myHandler.postDelayed(mRefreshMessagesRunnable, POLL_INTERVAL);
+
+        Message message = new Message();
+        message.setUserId(ParseUser.getCurrentUser().getObjectId());
+
+
+        ParseLiveQueryClient parseLiveQueryClient = ParseLiveQueryClient.Factory.getClient();
+        ParseQuery<Message> parseQuery = ParseQuery.getQuery(Message.class);
+        parseQuery.orderByDescending("createdAt");
+        parseQuery.findInBackground(new FindCallback<Message>() {
+                                        public void done(List<Message> messages, ParseException e) {
+                                            if (e == null) {
+                                                mMessages.clear();
+                                                mMessages.addAll(messages);
+                                                mAdapter.notifyDataSetChanged(); // update adapter
+                                            }
+                                        }
+                                    });
+
+
+
+        SubscriptionHandling<Message> subscriptionHandling = parseLiveQueryClient.subscribe(parseQuery);
+
+        subscriptionHandling.handleEvent(SubscriptionHandling.Event.CREATE, new
+
+                SubscriptionHandling.HandleEventCallback<Message>() {
+
+                    @Override
+
+                    public void onEvent(ParseQuery<Message> query, Message object) {
+
+                        mMessages.add(0, object);
+
+                        // RecyclerView updates need to be run on the UI thread
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mAdapter.notifyDataSetChanged();
+                                rvChat.scrollToPosition(0);
+                            }
+                        });
+                    }
+                });
+        // User login
     }
 
     // Get the userId from the cached currentUser object
@@ -146,7 +186,7 @@ public class ChatActivity extends Fragment {
                 message.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if(e == null) {
+                        if (e == null) {
                             Toast.makeText(getActivity(), "Successfully created message on Parse",
                                     Toast.LENGTH_SHORT).show();
                             refreshMessages();
@@ -158,7 +198,8 @@ public class ChatActivity extends Fragment {
         });
     }
 
-    // Query messages from Parse so we can load them into the chat adapter
+
+//     Query messages from Parse so we can load them into the chat adapter
     void refreshMessages() {
         // Construct query to execute
         ParseQuery<Message> query = ParseQuery.getQuery(Message.class);
@@ -178,7 +219,6 @@ public class ChatActivity extends Fragment {
                     // Scroll to the bottom of the list on initial load
                     if (mFirstLoad) {
                         rvChat.scrollToPosition(0);
-                        mFirstLoad = false;
                     }
                 } else {
                     Log.e("message", "Error Loading Messages" + e);
