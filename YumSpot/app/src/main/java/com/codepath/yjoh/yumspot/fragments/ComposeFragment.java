@@ -82,16 +82,28 @@ public class ComposeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String description = etDescription.getText().toString();
+                ParseUser currentUser = ParseUser.getCurrentUser();
                 if (description.isEmpty()) {
                     Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (photoFile == null || ivPostImage.getDrawable() == null) {
-                    Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    savePost(description, currentUser);
+                    PostsFragment posts = new PostsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.flContainer, posts)
+                            .addToBackStack(null)
+                            .commit();
+                    Toast.makeText(getContext(), "you created new post successfully", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
+                Toast.makeText(getContext(), "you created new post successfully", Toast.LENGTH_SHORT).show();
+                PostsFragment posts = new PostsFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.flContainer, posts)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }
@@ -148,6 +160,24 @@ public class ComposeFragment extends Fragment {
 
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
+    }
+
+    private void savePost(String description, ParseUser currentUser) {
+        Post post = new Post();
+        post.setDescription(description);
+        post.setUser(currentUser);
+        post.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving", e);
+                    Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
+                }
+                Log.i(TAG, "Post save was successful!!");
+                etDescription.setText("");
+                ivPostImage.setImageResource(0);
+            }
+        });
     }
 
     private void savePost(String description, ParseUser currentUser, File photoFile) {

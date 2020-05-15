@@ -82,9 +82,10 @@ public class ProfileFragment extends PostsFragment {
 
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+
         queryPosts();
     }
-
+    @Override
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);

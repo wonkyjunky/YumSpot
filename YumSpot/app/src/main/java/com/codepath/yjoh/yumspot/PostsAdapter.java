@@ -89,7 +89,7 @@ public class PostsAdapter extends RecyclerView.Adapter {
             });
         }
         else {
-            Post post = posts.get(position);
+            Post post = posts.get(position-1);
             ViewHolderTwo viewHolderTwo = (ViewHolderTwo) holder;
             viewHolderTwo.tvUsername.setText("[" + post.getUser().getUsername() + "]");
             viewHolderTwo.tvDescription.setText(post.getDescription());
