@@ -134,7 +134,7 @@ public class PostsAdapter extends RecyclerView.Adapter {
 
         public ViewHolderTwo(@NonNull View itemView) {
             super(itemView);
-            tvUsername = itemView.findViewById(R.id.tvUserName);
+            tvUsername = itemView.findViewById(R.id.tvName);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUpdatedAt = itemView.findViewById(R.id.tvUpdatedAt);

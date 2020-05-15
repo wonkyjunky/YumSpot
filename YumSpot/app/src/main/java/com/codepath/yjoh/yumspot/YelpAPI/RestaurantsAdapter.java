@@ -67,7 +67,7 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tvUserName);
+            tvName = itemView.findViewById(R.id.tvName);
             ratingBar = itemView.findViewById(R.id.ratingBar);
             tvNumReviews = itemView.findViewById(R.id.tvNumReviews);
             tvAddress = itemView.findViewById(R.id.tvAddress);

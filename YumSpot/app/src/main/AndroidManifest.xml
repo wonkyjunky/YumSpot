@@ -29,7 +29,7 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".fragments.ChatActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".fragments.SearchActivity" />
         <activity android:name=".SignupActivity" />

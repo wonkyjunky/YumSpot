@@ -15,7 +15,7 @@
         ></TextView>
 
     <TextView
-        android:id="@+id/tvUserName"
+        android:id="@+id/tvName"
         android:fontFamily="@font/coda"
         android:textSize="16dp"
         android:layout_width="match_parent"
