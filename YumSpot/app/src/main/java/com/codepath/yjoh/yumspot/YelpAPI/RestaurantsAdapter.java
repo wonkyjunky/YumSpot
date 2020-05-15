@@ -2,14 +2,12 @@ package com.codepath.yjoh.yumspot.YelpAPI;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,10 +17,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.codepath.yjoh.yumspot.DetailsActivity;
+import com.codepath.yjoh.yumspot.fragments.DetailsActivity;
 import com.codepath.yjoh.yumspot.R;
-import com.codepath.yjoh.yumspot.SearchActivity;
-import com.codepath.yjoh.yumspot.YelpAPI.Detailed.YelpServiceDetails;
 
 import java.util.List;
 
@@ -71,7 +67,7 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tvName);
+            tvName = itemView.findViewById(R.id.tvUserName);
             ratingBar = itemView.findViewById(R.id.ratingBar);
             tvNumReviews = itemView.findViewById(R.id.tvNumReviews);
             tvAddress = itemView.findViewById(R.id.tvAddress);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSunrise"
-    tools:context=".CategoryActivity">
+    tools:context=".fragments.CategoryActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -105,59 +105,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menuBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:backgroundTint="#F1E6DB"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/ibMenuSearch"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="35dp"
-            android:backgroundTint="@android:color/transparent"
-            android:paddingTop="20dp"
-            android:scaleType="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_search" />
-
-        <ImageButton
-            android:id="@+id/ibMenuFeed"
-            android:layout_width="52dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="135dp"
-            android:backgroundTint="@android:color/transparent"
-            android:paddingBottom="10dp"
-            android:tint="@color/colorGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_feed" />
-
-        <ImageButton
-            android:id="@+id/ibMenuChat"
-            android:layout_width="54dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="240dp"
-            android:backgroundTint="@android:color/transparent"
-            android:paddingTop="22dp"
-            android:tint="@color/colorGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/ic_chat" />
-
-        <ImageButton
-            android:id="@+id/ibMenuSetting"
-            android:layout_width="44dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="340dp"
-            android:backgroundTint="@android:color/transparent"
-            android:paddingBottom="0dp"
-            android:tint="@color/colorGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/ic_profile" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

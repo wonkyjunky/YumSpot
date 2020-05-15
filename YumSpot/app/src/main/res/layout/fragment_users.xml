@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    tools:context=".fragments.UserFragment">
+
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="265dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/bt_round_share"
+        android:fontFamily="@font/coda"
+        android:text="My Posts"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="265dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="70dp"
+        android:background="@drawable/bt_round_share"
+        android:fontFamily="@font/coda"
+        android:text="Log out"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

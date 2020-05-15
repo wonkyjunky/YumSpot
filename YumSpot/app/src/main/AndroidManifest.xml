@@ -3,6 +3,7 @@
     package="com.codepath.yjoh.yumspot">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".fragments.DetailsActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -28,11 +29,11 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".ChatActivity"></activity>
-        <activity android:name=".FeedActivity"></activity>
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".fragments.SearchActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".CategoryActivity"></activity>
+        <activity android:name=".fragments.CategoryActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +41,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"

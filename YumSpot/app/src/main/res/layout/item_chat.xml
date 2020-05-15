@@ -20,7 +20,7 @@
         android:clickable="false"
         android:ellipsize="end"
         android:focusable="false"
-        android:inputType="textMultiLine"
+        android:inputType="textNoSuggestions"
         android:padding="20dp"
         android:scrollbars="vertical"
         android:textSize="18sp"></EditText>

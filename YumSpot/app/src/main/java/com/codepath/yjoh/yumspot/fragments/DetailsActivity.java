@@ -1,6 +1,9 @@
-package com.codepath.yjoh.yumspot;
+package com.codepath.yjoh.yumspot.fragments;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +11,9 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,8 +22,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.codepath.yjoh.yumspot.MainActivity;
+import com.codepath.yjoh.yumspot.R;
 import com.codepath.yjoh.yumspot.YelpAPI.Detailed.YelpDetailedRestaurant;
 import com.codepath.yjoh.yumspot.YelpAPI.Detailed.YelpServiceDetails;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -150,9 +158,9 @@ public class DetailsActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
-
             }
+
+
 
             @Override
             public void onFailure(Call<YelpDetailedRestaurant> call, Throwable t) {

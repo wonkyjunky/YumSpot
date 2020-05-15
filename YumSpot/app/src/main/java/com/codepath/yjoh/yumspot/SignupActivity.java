@@ -63,7 +63,7 @@ public class SignupActivity extends AppCompatActivity {
                         }
                         else{
                             Log.e(TAG, "Onclicked", e);
-                            Toast.makeText(SignupActivity.this, "Something Wrong with SignUp", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "Something wrong with sign up", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

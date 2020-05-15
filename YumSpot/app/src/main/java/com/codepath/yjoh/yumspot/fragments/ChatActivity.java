@@ -1,17 +1,25 @@
-package com.codepath.yjoh.yumspot;
+package com.codepath.yjoh.yumspot.fragments;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.codepath.yjoh.yumspot.ChatAdapter;
+import com.codepath.yjoh.yumspot.Message;
+import com.codepath.yjoh.yumspot.R;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.Parse;
@@ -28,7 +36,7 @@ import java.util.List;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends Fragment {
     static final String TAG = ChatActivity.class.getSimpleName();
     static final String USER_ID_KEY = "userId";
     static final String BODY_KEY = "body";
@@ -36,6 +44,17 @@ public class ChatActivity extends AppCompatActivity {
 
     EditText etMessage;
     Button btSend;
+
+    public ChatActivity() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.activity_chat, container, false);
+    }
 
     // Create a handler which can run code periodically
     static final int POLL_INTERVAL = 1000; // milliseconds
@@ -49,16 +68,24 @@ public class ChatActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        etMessage = (EditText) view.findViewById(R.id.etMessage);
+        btSend = (Button) view.findViewById(R.id.btSend);
+        rvChat = (RecyclerView) view.findViewById(R.id.rvChat);
+
+        Message message = new Message();
+        message.setUserId(ParseUser.getCurrentUser().getObjectId());
+
+        refreshMessages();
+
         // User login
         if (ParseUser.getCurrentUser() != null) { // start with existing user
             startWithCurrentUser();
         } else { // If not logged in, login as a new anonymous user
             login();
         }
-
+//        myHandler.postDelayed(mRefreshMessagesRunnable, POLL_INTERVAL);
     }
 
     // Get the userId from the cached currentUser object
@@ -90,17 +117,17 @@ public class ChatActivity extends AppCompatActivity {
     // Setup button event handler which posts the entered message to Parse
     void setupMessagePosting() {
         // Find the text field and button
-        etMessage = (EditText) findViewById(R.id.etMessage);
-        btSend = (Button) findViewById(R.id.btSend);
-        rvChat = (RecyclerView) findViewById(R.id.rvChat);
+//        etMessage = (EditText) view.findViewById(R.id.etMessage);
+//        btSend = (Button) view.findViewById(R.id.btSend);
+//        rvChat = (RecyclerView) view.findViewById(R.id.rvChat);
         mMessages = new ArrayList<>();
         mFirstLoad = true;
         final String userId = ParseUser.getCurrentUser().getObjectId();
-        mAdapter = new ChatAdapter(ChatActivity.this, userId, mMessages);
+        mAdapter = new ChatAdapter(getActivity(), userId, mMessages);
         rvChat.setAdapter(mAdapter);
 
         // associate the LayoutManager with the RecylcerView
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ChatActivity.this);
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(true);
         rvChat.setLayoutManager(linearLayoutManager);
 
@@ -120,7 +147,7 @@ public class ChatActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseException e) {
                         if(e == null) {
-                            Toast.makeText(ChatActivity.this, "Successfully created message on Parse",
+                            Toast.makeText(getActivity(), "Successfully created message on Parse",
                                     Toast.LENGTH_SHORT).show();
                             refreshMessages();
                         }

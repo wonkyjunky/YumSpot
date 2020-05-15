@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".fragments.DetailsActivity">
 
     <ImageView
         android:id="@+id/ivImage3"
@@ -34,24 +34,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAdresses"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageButton
-        android:id="@+id/btBackDetails"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bt_round"
-        android:backgroundTint="@color/colorLogoBlue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
-
     <TextView
         android:id="@+id/tvDetailedTitle"
-        android:layout_width="356dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="353dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="36dp"
         android:background="#56FF5722"
         android:textAlignment="center"
         android:textSize="30sp"
