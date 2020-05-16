@@ -183,6 +183,7 @@ public class ChatActivity extends Fragment {
                 Message message = new Message();
                 message.setBody(data);
                 message.setUserId(ParseUser.getCurrentUser().getObjectId());
+                message.setUserNumberKey(ParseUser.getCurrentUser().getInt("number"));
                 message.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {

@@ -94,7 +94,7 @@ public class ProfileFragment extends PostsFragment {
 
         queryPosts();
 
-        Glide.with(this).load(getProfileUrl(ParseUser.getCurrentUser().getUsername())).override(300,300).circleCrop().into(ivProfile);
+        Glide.with(this).load(getProfileUrl(ParseUser.getCurrentUser().getInt("number"))).override(300,300).circleCrop().into(ivProfile);
     }
     @Override
     protected void queryPosts() {
@@ -119,18 +119,8 @@ public class ProfileFragment extends PostsFragment {
         });
     }
 
-    private static String getProfileUrl(final String userId) {
-        String hex = "";
-        try {
-            final MessageDigest digest = MessageDigest.getInstance("MD5");
-            final byte[] hash = digest.digest(userId.getBytes());
-            final BigInteger bigInt = new BigInteger(hash);
-            hex = bigInt.abs().toString(16);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-//        return "https://www.gravatar.com/avatar/" + hex + "?d=identicon";
-//        return "https://api.adorable.io/avatars/285/" + hex;
-        return "https://i.pravatar.cc/200?img=" + hex;
+    private static String getProfileUrl(final int userNumber) {
+        Log.d("Number: ", ""+userNumber);
+        return "https://i.pravatar.cc/200?img=" + userNumber;
     }
 }

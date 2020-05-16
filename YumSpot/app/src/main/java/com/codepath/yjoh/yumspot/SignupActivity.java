@@ -11,10 +11,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.parse.CountCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.List;
 
 public class SignupActivity extends AppCompatActivity {
     public static final String TAG ="SignupActivity";
@@ -24,11 +28,23 @@ public class SignupActivity extends AppCompatActivity {
     EditText etPassword;
     EditText etName;
     EditText etEmail;
+    int countUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+
+        query.countInBackground(new CountCallback() {
+            @Override
+            public void done(int count, ParseException e) {
+                if (e == null){
+                     countUser = count;
+                }
+            }
+        });
 
         btBack = findViewById(R.id.btBack);
         btSign = findViewById(R.id.btSign);
@@ -54,6 +70,7 @@ public class SignupActivity extends AppCompatActivity {
                 user.setPassword(etPassword.getText().toString());
                 user.setEmail(etEmail.getText().toString());
                 user.put("Name", etName.getText().toString());
+                user.put("number", countUser);
 
                 user.signUpInBackground(new SignUpCallback() {
                     @Override

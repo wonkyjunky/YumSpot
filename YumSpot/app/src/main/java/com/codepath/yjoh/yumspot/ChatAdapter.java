@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.parse.ParseUser;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -54,24 +55,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>  {
         }
 
         final ImageView profileView = isMe ? holder.imageMe : holder.imageOther;
-        Glide.with(mContext).load(getProfileUrl(message.getUserId())).into(profileView);
+        Glide.with(mContext).load(getProfileUrl(message.getNumber())).into(profileView);
         holder.body.setText(message.getBody());
     }
 
     // Create a gravatar image based on the hash value obtained from userId
-    public static String getProfileUrl(final String userId) {
-        String hex = "";
-        try {
-            final MessageDigest digest = MessageDigest.getInstance("MD5");
-            final byte[] hash = digest.digest(userId.getBytes());
-            final BigInteger bigInt = new BigInteger(hash);
-            hex = bigInt.abs().toString(16);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-//        return "https://www.gravatar.com/avatar/" + hex + "?d=identicon";
-//        return "https://api.adorable.io/avatars/285/" + hex;
-        return "https://i.pravatar.cc/200?img=" + hex;
+    private static String getProfileUrl(final int userNumber) {
+        return "https://i.pravatar.cc/200?img=" + userNumber;
     }
 
     @Override
