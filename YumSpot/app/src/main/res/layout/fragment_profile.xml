@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/tvUserName"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/bt_round"
         android:backgroundTint="@color/colorLogoBlue"
         android:fontFamily="@font/coda"
@@ -38,9 +38,9 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="210dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/bt_round"
         android:backgroundTint="@color/colorLogoBlue"
@@ -55,9 +55,9 @@
 
     <TextView
         android:id="@+id/tvEmail"
-        android:layout_width="160dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="210dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/bt_round"
         android:backgroundTint="@color/colorLogoBlue"
