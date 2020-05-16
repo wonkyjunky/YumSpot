@@ -100,7 +100,7 @@ public class ProfileFragment extends PostsFragment {
 
 //        queryPosts();
 
-        Glide.with(this).load(getProfileUrl(ParseUser.getCurrentUser().getInt("number"))).override(300,300).circleCrop().into(ivProfile);
+        Glide.with(this).load(getProfileUrl(ParseUser.getCurrentUser().getInt("number"))).override(270,270).circleCrop().into(ivProfile);
     }
     @Override
     protected void queryPosts() {
