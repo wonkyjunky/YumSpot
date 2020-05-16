@@ -1,6 +1,10 @@
 package com.codepath.yjoh.yumspot.fragments;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -8,6 +12,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
@@ -17,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,12 +31,20 @@ import android.widget.Toast;
 
 import com.codepath.yjoh.yumspot.Post;
 import com.codepath.yjoh.yumspot.R;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.DexterError;
+import com.karumi.dexter.listener.PermissionRequestErrorListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -63,6 +78,24 @@ public class ComposeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_compose, container, false);
     }
 
+    private static final int REQUEST_CODE = 121;
+    private void requiredUserPermission(){
+        if(!permissionAlreadyGranted()){
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, REQUEST_CODE);
+        }
+    }
+
+    private boolean permissionAlreadyGranted() {
+        String[] perms = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+        for (String permission : perms) {
+            if (ContextCompat.checkSelfPermission(getContext(), permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
@@ -73,6 +106,9 @@ public class ComposeFragment extends Fragment {
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
         btnGallery = view.findViewById(R.id.btnGallery);
+
+        requiredUserPermission();
+
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +166,9 @@ public class ComposeFragment extends Fragment {
             // Bring up gallery to select a photo
             startActivityForResult(intent, PICK_PHOTO_CODE);
         }
+        photoFile = getPhotoFileUri(photoFileName);
+        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.yjoh.yumspot.fileprovider", photoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
     }
 
     private void launchCamera() {
@@ -152,24 +191,23 @@ public class ComposeFragment extends Fragment {
         }
     }
 
-
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null) {
+        if (data != null && requestCode == PICK_PHOTO_CODE && resultCode == RESULT_OK) {
             Uri photoUri = data.getData();
-            // Do something with the photo based on Uri
-            Bitmap selectedImage = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
-            // Load the selected image into a preview
+            String picturePath = getPath(getActivity().getApplicationContext(), photoUri);
+            Log.d("Picture Path", picturePath);
+            photoFile = new File(picturePath);
+            Bitmap selectedImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+            // RESIZE BITMAP, see section below
+            // Load the taken image into a preview
             ivPostImage.setImageBitmap(selectedImage);
-        } else {
-            Toast.makeText(getContext(), "Picture wasn't chosen!", Toast.LENGTH_SHORT).show();
         }
-
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+        else if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
+                Log.i(TAG, "FileName: " + photoFile.getAbsolutePath());
                 Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
@@ -178,6 +216,23 @@ public class ComposeFragment extends Fragment {
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public static String getPath(Context context, Uri uri) {
+        String result = null;
+        String[] proj = { MediaStore.Images.Media.DATA };
+        Cursor cursor = context.getContentResolver().query( uri, proj, null, null, null );
+        if(cursor != null){
+            if (cursor.moveToFirst()) {
+                int column_index = cursor.getColumnIndexOrThrow(proj[0]);
+                result = cursor.getString(column_index);
+            }
+            cursor.close();
+        }
+        if(result == null) {
+            result = "Not found";
+        }
+        return result;
     }
 
     // Returns the File for a photo stored on disk given the fileName
