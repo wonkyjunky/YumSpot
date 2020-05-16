@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.codepath.yjoh.yumspot.ComposeAdapter;
 import com.codepath.yjoh.yumspot.Post;
 import com.codepath.yjoh.yumspot.PostsAdapter;
 import com.codepath.yjoh.yumspot.R;
@@ -30,7 +31,9 @@ public class PostsFragment extends Fragment {
 
     public static final String TAG = "PostsFragment";
     private RecyclerView rvPosts;
+    private RecyclerView rvCompose;
     protected PostsAdapter adapter;
+    protected ComposeAdapter adapter2;
     protected List<Post> allPosts;
 
     public PostsFragment() {
@@ -49,12 +52,16 @@ public class PostsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
-
+        rvCompose = view.findViewById(R.id.rvCompose);
         allPosts = new ArrayList<>();
         adapter = new PostsAdapter(getContext(), allPosts);
-
+        adapter2 = new ComposeAdapter(getContext());
+        rvCompose.setAdapter(adapter2);
+        rvCompose.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter.notifyDataSetChanged();
+        rvCompose.getLayoutManager().scrollToPosition(0);
         queryPosts();
     }
 

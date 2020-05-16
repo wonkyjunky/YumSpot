@@ -36,7 +36,6 @@ public class PostsAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         int viewType = 1; //Default is 1
-        if (position == 0) viewType = 0; //if zero, it will be a header view
         return viewType;
     }
 
@@ -62,10 +61,6 @@ public class PostsAdapter extends RecyclerView.Adapter {
 //        }
 
         switch (viewType) {
-            case 0: {
-                view = layoutInflater.inflate(R.layout.item_compose, parent, false);
-                return new ViewHolderOne(view);
-            }
             case 1: {
                 view = layoutInflater.inflate(R.layout.item_post, parent, false);
                 return new ViewHolderTwo(view);
@@ -77,34 +72,21 @@ public class PostsAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (holder.getItemViewType() == 0) {
-            ViewHolderOne viewHolderOne = (ViewHolderOne) holder;
-            viewHolderOne.ibPost.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    ComposeFragment composeFragment = new ComposeFragment();
-                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, composeFragment).addToBackStack(null).commit();
-                }
-            });
-        }
-        else {
-            Post post = posts.get(position-1);
-            ViewHolderTwo viewHolderTwo = (ViewHolderTwo) holder;
-            viewHolderTwo.tvUsername.setText("[" + post.getUser().getUsername() + "]");
-            viewHolderTwo.tvDescription.setText(post.getDescription());
+        Post post = posts.get(position);
+        ViewHolderTwo viewHolderTwo = (ViewHolderTwo) holder;
+        viewHolderTwo.tvUsername.setText("[" + post.getUser().getUsername() + "]");
+        viewHolderTwo.tvDescription.setText(post.getDescription());
 
-            Date date = post.getUpdatedAt();
-            DateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy");
-            String strDate = dateFormat.format(date);
-            viewHolderTwo.tvUpdatedAt.setText("updated at " + strDate);
+        Date date = post.getUpdatedAt();
+        DateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy");
+        String strDate = dateFormat.format(date);
+        viewHolderTwo.tvUpdatedAt.setText("updated at " + strDate);
 
-            ParseFile image = post.getImage();
-            if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(viewHolderTwo.ivImage);
-            } else {
-                viewHolderTwo.ivImage.setVisibility(View.GONE);
-            }
+        ParseFile image = post.getImage();
+        if (image != null) {
+            Glide.with(context).load(image.getUrl()).into(viewHolderTwo.ivImage);
+        } else {
+            viewHolderTwo.ivImage.setVisibility(View.GONE);
         }
     }
 
@@ -112,18 +94,6 @@ public class PostsAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return posts.size();
-    }
-
-    class ViewHolderOne extends RecyclerView.ViewHolder {
-
-        //        EditText etPost;
-        Button ibPost;
-
-        public ViewHolderOne(@NonNull View itemView) {
-            super(itemView);
-//            etPost = itemView.findViewById(R.id.etPost);
-            ibPost = itemView.findViewById(R.id.ibPost);
-        }
     }
 
     class ViewHolderTwo extends RecyclerView.ViewHolder {

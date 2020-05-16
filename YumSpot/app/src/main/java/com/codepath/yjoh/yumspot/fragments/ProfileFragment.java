@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.yjoh.yumspot.ChatAdapter;
+import com.codepath.yjoh.yumspot.ComposeAdapter;
 import com.codepath.yjoh.yumspot.Post;
 import com.codepath.yjoh.yumspot.PostsAdapter;
 import com.codepath.yjoh.yumspot.R;
@@ -59,6 +60,7 @@ public class ProfileFragment extends PostsFragment {
     TextView tvEmail;
     TextView tvName;
     RecyclerView rvPosts;
+    RecyclerView rvCompose;
     ImageView ivProfile;
 
     public ProfileFragment() {
@@ -80,6 +82,7 @@ public class ProfileFragment extends PostsFragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         tvName = view.findViewById(R.id.tvName);
         rvPosts = view.findViewById(R.id.rvPosts);
+        rvCompose = view.findViewById(R.id.rvCompose);
         ivProfile = view.findViewById(R.id.ivProfile);
 
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
@@ -87,12 +90,15 @@ public class ProfileFragment extends PostsFragment {
         tvEmail.setText(ParseUser.getCurrentUser().getEmail());
 
         allPosts = new ArrayList<>();
+        adapter2 = new ComposeAdapter(getContext());
         adapter = new PostsAdapter(getContext(), allPosts);
-
+        rvCompose.setAdapter(adapter2);
+        rvCompose.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvCompose.getLayoutManager().scrollToPosition(0);
 
-        queryPosts();
+//        queryPosts();
 
         Glide.with(this).load(getProfileUrl(ParseUser.getCurrentUser().getInt("number"))).override(300,300).circleCrop().into(ivProfile);
     }
