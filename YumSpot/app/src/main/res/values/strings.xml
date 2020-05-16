@@ -4,7 +4,7 @@
     <string name="Welcome">Welcome to YumSpot!</string>
     <string name="don_t_have_an_account"><u>Don\'t have an account?</u></string>
     <string name="filter">filter</string>
-    <string name="message_hint">Say anything</string>
+    <string name="message_hint">Type message...</string>
     <string name="send">send</string>
     <string name="profile_me">My Profile Pic</string>
     <string name="profile_other">Other profile pic</string>

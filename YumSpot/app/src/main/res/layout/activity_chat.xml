@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_above="@+id/rlSend"
+        android:background="@color/colorBackground"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -20,9 +21,10 @@
     <RelativeLayout
         android:id="@+id/rlSend"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/et_border"
         android:paddingLeft="0dp"
         android:paddingTop="5dp"
         android:paddingRight="0dp"
@@ -30,9 +32,11 @@
 
         <EditText
             android:id="@+id/etMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="326dp"
+            android:layout_height="match_parent"
             android:layout_alignBottom="@+id/btSend"
+            android:layout_marginRight="-3dp"
+            android:layout_marginBottom="-10dp"
             android:layout_toLeftOf="@+id/btSend"
             android:gravity="top"
             android:hint="@string/message_hint"
@@ -42,9 +46,11 @@
         <Button
             android:id="@+id/btSend"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:gravity="center"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorWhite"
             android:paddingRight="10dp"
             android:text="@string/send"
             android:textSize="18sp"></Button>

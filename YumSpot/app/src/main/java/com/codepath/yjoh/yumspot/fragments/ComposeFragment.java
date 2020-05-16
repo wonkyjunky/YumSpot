@@ -38,12 +38,15 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ComposeFragment extends Fragment {
 
+    public final static int PICK_PHOTO_CODE = 1046;
+
     public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private Button btnGallery;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -69,6 +72,14 @@ public class ComposeFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+        btnGallery = view.findViewById(R.id.btnGallery);
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchGallery();
+            }
+        });
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +119,19 @@ public class ComposeFragment extends Fragment {
         });
     }
 
+    private void launchGallery() {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
+    }
+
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -133,6 +157,16 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            Uri photoUri = data.getData();
+            // Do something with the photo based on Uri
+            Bitmap selectedImage = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
+            // Load the selected image into a preview
+            ivPostImage.setImageBitmap(selectedImage);
+        } else {
+            Toast.makeText(getContext(), "Picture wasn't chosen!", Toast.LENGTH_SHORT).show();
+        }
+
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk

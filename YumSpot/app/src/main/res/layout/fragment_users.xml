@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3F3"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
     tools:context=".fragments.UserFragment">
 
     <Button
@@ -13,7 +12,7 @@
         android:layout_width="265dp"
         android:layout_height="58dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="220dp"
         android:background="@drawable/bt_round_share"
         android:fontFamily="@font/coda"
         android:text="My Posts"
@@ -26,8 +25,8 @@
         android:id="@+id/btnLogout"
         android:layout_width="265dp"
         android:layout_height="58dp"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="70dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/bt_round_share"
         android:fontFamily="@font/coda"
         android:text="Log out"

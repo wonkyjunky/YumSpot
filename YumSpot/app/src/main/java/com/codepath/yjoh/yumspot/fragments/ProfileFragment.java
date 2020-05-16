@@ -1,10 +1,13 @@
 package com.codepath.yjoh.yumspot.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.codepath.yjoh.yumspot.ChatAdapter;
 import com.codepath.yjoh.yumspot.Post;
 import com.codepath.yjoh.yumspot.PostsAdapter;
 import com.codepath.yjoh.yumspot.R;
@@ -20,6 +25,8 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +59,7 @@ public class ProfileFragment extends PostsFragment {
     TextView tvEmail;
     TextView tvName;
     RecyclerView rvPosts;
+    ImageView ivProfile;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -72,6 +80,7 @@ public class ProfileFragment extends PostsFragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         tvName = view.findViewById(R.id.tvName);
         rvPosts = view.findViewById(R.id.rvPosts);
+        ivProfile = view.findViewById(R.id.ivProfile);
 
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
         tvName.setText(ParseUser.getCurrentUser().getString("Name"));
@@ -84,6 +93,8 @@ public class ProfileFragment extends PostsFragment {
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryPosts();
+
+        Glide.with(this).load(getProfileUrl(ParseUser.getCurrentUser().getUsername())).override(300,300).circleCrop().into(ivProfile);
     }
     @Override
     protected void queryPosts() {
@@ -106,5 +117,20 @@ public class ProfileFragment extends PostsFragment {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private static String getProfileUrl(final String userId) {
+        String hex = "";
+        try {
+            final MessageDigest digest = MessageDigest.getInstance("MD5");
+            final byte[] hash = digest.digest(userId.getBytes());
+            final BigInteger bigInt = new BigInteger(hash);
+            hex = bigInt.abs().toString(16);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        return "https://www.gravatar.com/avatar/" + hex + "?d=identicon";
+//        return "https://api.adorable.io/avatars/285/" + hex;
+        return "https://i.pravatar.cc/200?img=" + hex;
     }
 }
