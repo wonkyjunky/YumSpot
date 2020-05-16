@@ -28,6 +28,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/coda"
         android:text="@string/select_a_category"
+        android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

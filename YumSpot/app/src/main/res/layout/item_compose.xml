@@ -25,7 +25,9 @@
         android:layout_marginBottom="0dp"
         android:background="@drawable/bt_round_share"
         android:fontFamily="@font/coda"
+        android:gravity="center"
         android:text="share"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="18sp" />

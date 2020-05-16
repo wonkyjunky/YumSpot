@@ -12,43 +12,43 @@
         android:layout_height="1dp"
         android:layout_marginBottom="10dp"
         android:background="#CDCCCC"
-        ></TextView>
+        android:fontFamily="@font/catamaran"></TextView>
 
     <TextView
         android:id="@+id/tvName"
-        android:fontFamily="@font/coda"
-        android:textSize="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
+        android:fontFamily="@font/coda"
         android:text="TextView"
+        android:textSize="16dp"
         tools:text="username" />
 
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
 
     <TextView
         android:id="@+id/tvDescription"
-        android:fontFamily="@font/coda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:fontFamily="@font/catamaran"
+        android:text="feed description"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24dp"
-        android:text="feed description" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tvUpdatedAt"
-        android:fontFamily="@font/coda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="updated at" />
+        android:fontFamily="@font/coda"
+        android:text="updated at"
+        android:textSize="14dp" />
 
 </LinearLayout>
