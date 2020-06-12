@@ -7,7 +7,7 @@
 
 ## Overview
 ### Description
-YumSpot is an app that allows users can search good places to eat, upload and share photos of food, and make appointments to eat out.
+YumSpot is an app that allows users to search good places to eat, upload/share photos of food, and make appointments to eat out.
 
 ### App Evaluation
 - **Category:** Social Networking / Food
